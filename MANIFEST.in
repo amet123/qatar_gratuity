@@ -1,0 +1,2 @@
+include MANIFEST.in
+recursive-include qatar_gratuity *.json *.js *.css *.html *.py

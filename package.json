@@ -1,0 +1,8 @@
+{
+  "name": "qatar_gratuity",
+  "version": "1.0.0",
+  "description": "Qatar Labour Law Gratuity for ERPNext 15",
+  "scripts": {
+    "build": "echo 'No build step required for qatar_gratuity'"
+  }
+}

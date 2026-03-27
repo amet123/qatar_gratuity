@@ -1,0 +1,8 @@
+{
+  "name": "qatar_gratuity",
+  "version": "1.0.0",
+  "description": "Qatar Labour Law Gratuity Calculation for ERPNext 15",
+  "scripts": {
+    "build": "echo 'No frontend build needed'"
+  }
+}
