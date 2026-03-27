@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "autoname": "HR-QGRAT-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_section",
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "column_break_1",
+  "termination_date",
+  "use_company_policy",
+  "policy_used",
+  "service_section",
+  "joining_date",
+  "service_display",
+  "service_years",
+  "unpaid_leave_days",
+  "column_break_2",
+  "basic_salary",
+  "gratuity_amount",
+  "currency",
+  "eligible",
+  "calculation_section",
+  "calculation_note",
+  "accounting_section",
+  "journal_entry",
+  "status_section",
+  "status"
+ ],
+ "fields": [
+  {"fieldname": "employee_section", "fieldtype": "Section Break", "label": "Employee Details"},
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {"fieldname": "employee_name", "fieldtype": "Data", "label": "Employee Name", "fetch_from": "employee.employee_name", "read_only": 1},
+  {"fieldname": "department",    "fieldtype": "Link", "label": "Department",    "options": "Department", "fetch_from": "employee.department", "read_only": 1},
+  {"fieldname": "designation",   "fieldtype": "Link", "label": "Designation",   "options": "Designation", "fetch_from": "employee.designation", "read_only": 1},
+  {"fieldname": "column_break_1","fieldtype": "Column Break"},
+  {
+   "fieldname": "termination_date",
+   "fieldtype": "Date",
+   "label": "Termination / Calculation Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "use_company_policy",
+   "fieldtype": "Check",
+   "label": "Use Company Policy (5 Years Minimum)",
+   "default": "1",
+   "description": "Checked = 5 years minimum (Company Policy). Unchecked = 1 year minimum (Qatar Labour Law)."
+  },
+  {"fieldname": "policy_used",   "fieldtype": "Data",  "label": "Policy Applied",  "read_only": 1},
+
+  {"fieldname": "service_section","fieldtype": "Section Break", "label": "Service & Calculation Details"},
+  {"fieldname": "joining_date",   "fieldtype": "Date",  "label": "Date of Joining",  "fetch_from": "employee.date_of_joining", "read_only": 1},
+  {"fieldname": "service_display","fieldtype": "Data",  "label": "Total Service",     "read_only": 1},
+  {"fieldname": "service_years",  "fieldtype": "Float", "label": "Service Years (Decimal)", "read_only": 1, "precision": "4"},
+  {"fieldname": "unpaid_leave_days","fieldtype":"Float","label": "Unpaid Leave Days Deducted", "read_only": 1},
+  {"fieldname": "column_break_2", "fieldtype": "Column Break"},
+  {"fieldname": "basic_salary",   "fieldtype": "Currency","label": "Basic Salary (Monthly)", "read_only": 1},
+  {"fieldname": "gratuity_amount","fieldtype": "Currency","label": "Gratuity Amount (QAR)",  "read_only": 1, "bold": 1, "in_list_view": 1},
+  {"fieldname": "currency",       "fieldtype": "Link",    "label": "Currency", "options": "Currency", "read_only": 1},
+  {"fieldname": "eligible",       "fieldtype": "Check",   "label": "Eligible", "read_only": 1},
+
+  {"fieldname": "calculation_section","fieldtype":"Section Break","label":"Calculation Breakdown"},
+  {"fieldname": "calculation_note","fieldtype":"Small Text","label":"Formula / Note","read_only":1},
+
+  {"fieldname": "accounting_section","fieldtype":"Section Break","label":"Accounting"},
+  {"fieldname": "journal_entry",  "fieldtype":"Link","label":"Journal Entry","options":"Journal Entry","read_only":1},
+
+  {"fieldname": "status_section", "fieldtype":"Section Break","label":"Status"},
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nApproved\nPaid\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1
+  }
+ ],
+ "is_submittable": 1,
+ "module": "Qatar Gratuity",
+ "name": "Qatar Gratuity Voucher",
+ "naming_rule": "Expression (old style)",
+ "permissions": [
+  {"role": "HR Manager",    "read": 1, "write": 1, "create": 1, "delete": 1, "submit": 1, "cancel": 1},
+  {"role": "HR User",       "read": 1, "write": 1, "create": 1},
+  {"role": "Employee",      "read": 1}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "employee_name"
+}
