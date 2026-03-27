@@ -195,6 +195,7 @@ qatar_gratuity/
 
 | Error | Solution |
 |-------|----------|
+| Doctype create manually karna hai? | **Nahi**. `Qatar Gratuity Voucher` DocType app install/migrate par auto-sync hota hai from JSON. Run `bench --site your-site.local migrate` and then search `Qatar Gratuity Voucher` in Awesome Bar. |
 | "No Salary Structure Assignment found" | Assign Salary Structure to employee first |
 | "Basic Salary component not found" | Name your earnings component exactly "Basic" |
 | "Gratuity accounts not found" | Create accounts as described in Step 4 above |
