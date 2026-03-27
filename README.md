@@ -203,4 +203,4 @@ qatar_gratuity/
 | `ModuleNotFoundError: No module named 'qatar_gratuity'` | App code is not available inside backend container. Run `bench get-app` **inside** the container, then `bench --site ... install-app qatar_gratuity`. |
 | `App qatar_gratuity is not in installed_apps` after restart | Run `bench --site your-site.local install-app qatar_gratuity` and `bench --site your-site.local migrate`, then restart containers. |
 | `ImportError` / failed app install due to old caches | Run `bench clear-cache && bench clear-website-cache`, then retry install. |
-| App installed but module not visible in Desk | Run `bench --site your-site.local migrate && bench --site your-site.local clear-cache`, then `bench --site your-site.local execute qatar_gratuity.setup.install.ensure_workspace` and hard refresh browser (`Ctrl+Shift+R`). |
+| App installed but module not visible in Desk | Run `bench --site your-site.local migrate && bench --site your-site.local clear-cache`, then `bench --site your-site.local execute "frappe.get_attr('qatar_gratuity.setup.install.ensure_workspace')"` and hard refresh browser (`Ctrl+Shift+R`). |
