@@ -1,0 +1,13 @@
+[project]
+name = "qatar_gratuity"
+version = "1.0.0"
+description = "Qatar Labour Law Gratuity Calculation for ERPNext 15"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "frappe"
+]
+
+[build-system]
+requires = ["flit_core >=3.2.0,<4"]
+build-backend = "flit_core.buildapi"
