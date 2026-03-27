@@ -47,14 +47,17 @@ docker compose exec backend bash
 
 # inside container
 cd /home/frappe/frappe-bench
-bench get-app /workspace/qatar_gratuity
+bench get-app /workspace/qatar_gratuity --skip-assets
 bench --site your-site.local install-app qatar_gratuity
 bench --site your-site.local migrate
 ```
 
-If you maintain custom images, rebuild and restart after adding the app:
+If you maintain custom images, rebuild and restart after adding the app.
+If you must build assets in a low-memory container, set a smaller Node heap:
 
 ```bash
+export NODE_OPTIONS=--max_old_space_size=512
+bench build --app qatar_gratuity
 docker compose build
 docker compose up -d
 ```
@@ -204,3 +207,4 @@ qatar_gratuity/
 | `App qatar_gratuity is not in installed_apps` after restart | Run `bench --site your-site.local install-app qatar_gratuity` and `bench --site your-site.local migrate`, then restart containers. |
 | `ImportError` / failed app install due to old caches | Run `bench clear-cache && bench clear-website-cache`, then retry install. |
 | App installed but module not visible in Desk | Run `bench --site your-site.local migrate && bench --site your-site.local clear-cache`, then `bench --site your-site.local execute "frappe.get_attr('qatar_gratuity.setup.install.ensure_workspace')"` and hard refresh browser (`Ctrl+Shift+R`). |
+| `bench build --app qatar_gratuity` fails with exit code `143` | This is usually container memory kill during Yarn build. Use `bench get-app ... --skip-assets`, then `install-app` + `migrate`. Only run build if needed, with `export NODE_OPTIONS=--max_old_space_size=512`. |
