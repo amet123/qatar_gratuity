@@ -38,6 +38,27 @@ bench build
 bench restart
 ```
 
+### Docker / CloudCluster install (recommended)
+If your ERPNext is running in Docker (CloudCluster), run bench commands **inside** the backend container:
+
+```bash
+# from your docker host
+docker compose exec backend bash
+
+# inside container
+cd /home/frappe/frappe-bench
+bench get-app /workspace/qatar_gratuity
+bench --site your-site.local install-app qatar_gratuity
+bench --site your-site.local migrate
+```
+
+If you maintain custom images, rebuild and restart after adding the app:
+
+```bash
+docker compose build
+docker compose up -d
+```
+
 ---
 
 ## ⚙️ ERPNext Setup (Do this ONCE)
@@ -178,3 +199,7 @@ qatar_gratuity/
 | "Basic Salary component not found" | Name your earnings component exactly "Basic" |
 | "Gratuity accounts not found" | Create accounts as described in Step 4 above |
 | Employee shows 0 years service | Check Date of Joining is set on Employee |
+| `ModuleNotFoundError: No module named 'qatar_gratuity'` | App code is not available inside backend container. Run `bench get-app` **inside** the container, then `bench --site ... install-app qatar_gratuity`. |
+| `App qatar_gratuity is not in installed_apps` after restart | Run `bench --site your-site.local install-app qatar_gratuity` and `bench --site your-site.local migrate`, then restart containers. |
+| `ImportError` / failed app install due to old caches | Run `bench clear-cache && bench clear-website-cache`, then retry install. |
+| App installed but module not visible in Desk | Run `bench --site your-site.local migrate && bench --site your-site.local clear-cache`, then hard refresh browser (`Ctrl+Shift+R`). Ensure user has role permission for the DocType. |
