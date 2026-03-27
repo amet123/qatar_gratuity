@@ -1,10 +1,3 @@
-[project]
-name = "qatar_gratuity"
-version = "1.0.0"
-description = "Qatar Labour Law Gratuity Calculation for ERPNext 15"
-readme = "README.md"
-requires-python = ">=3.10"
-
 [build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"

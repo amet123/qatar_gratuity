@@ -1,1 +1,1 @@
-frappe
+# No external pip dependencies required.
