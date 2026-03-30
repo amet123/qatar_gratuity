@@ -17,3 +17,6 @@ scheduler_events = {
         "qatar_gratuity.utils.gratuity_accrual.monthly_gratuity_accrual"
     ]
 }
+
+after_install = "qatar_gratuity.setup.install.after_install"
+after_migrate = ["qatar_gratuity.setup.install.after_migrate"]
