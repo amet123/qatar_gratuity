@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "autoname": "field:rule_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rule_name",
+  "company",
+  "is_active",
+  "effective_from",
+  "section_break_main",
+  "minimum_service_years_for_gratuity",
+  "gratuity_days_per_year",
+  "column_break_1",
+  "leave_salary_days_lt_5_years",
+  "leave_salary_days_ge_5_years",
+  "section_break_policy",
+  "exclude_non_working_days",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "label": "Rule Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "default": "Today"
+  },
+  {
+   "fieldname": "section_break_main",
+   "fieldtype": "Section Break",
+   "label": "Rule Values"
+  },
+  {
+   "fieldname": "minimum_service_years_for_gratuity",
+   "fieldtype": "Float",
+   "label": "Minimum Service Years for Gratuity",
+   "default": "1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gratuity_days_per_year",
+   "fieldtype": "Float",
+   "label": "Gratuity Days Per Year",
+   "default": "21",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "leave_salary_days_lt_5_years",
+   "fieldtype": "Float",
+   "label": "Leave Salary Days if Service < 5 Years",
+   "default": "21",
+   "reqd": 1
+  },
+  {
+   "fieldname": "leave_salary_days_ge_5_years",
+   "fieldtype": "Float",
+   "label": "Leave Salary Days if Service >= 5 Years",
+   "default": "28",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_policy",
+   "fieldtype": "Section Break",
+   "label": "Policy"
+  },
+  {
+   "fieldname": "exclude_non_working_days",
+   "fieldtype": "Check",
+   "label": "Exclude Non-Working Days",
+   "default": "1"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "module": "Qatar Gratuity",
+ "name": "Qatar Gratuity Rule",
+ "permissions": [
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HR User",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "rule_name"
+}
